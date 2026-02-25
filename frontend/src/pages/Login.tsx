@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+    const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
@@ -31,6 +32,9 @@ const Login = () => {
     setLoading(true);
     // TODO: Replace with your actual login API call
     await new Promise((r) => setTimeout(r, 1500));
+    login({
+        name:"Shubham Patil" , email: form.email , phone: "1234567890"
+    },"mock-jwt-token-12345")
     setLoading(false);
     navigate("/");
   };
